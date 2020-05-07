@@ -7,14 +7,6 @@ export default function App({navigation}) {
 
   const [qrText,setQrText] = useState("Scan Employee Passcode");
   const [userId,setUserId] = useState(null);
-  const [scanner,setScanner]=useState(false);
-
-  const toggle = ()=>{
-    setScanner(c=>!c);
-  }
-  const handleUser = (val)=>{
-    setQrText(val);
-  }
 
   return (
     <View style={{flex:6}}>
@@ -23,11 +15,9 @@ export default function App({navigation}) {
     </View>
         <Text style={{ alignSelf: 'center', fontSize: 23, marginTop: 40, marginBottom: 40}}>Access Details</Text>
     <View style={styles.container2}>
-        <TouchableOpacity onPress={toggle} style={styles.button}>
+        <TouchableOpacity onPress={()=>navigation.navigate("Scanner")} style={styles.button}>
         <Text>{qrText}</Text>
         </TouchableOpacity>
-        { scanner &&  <QrScanner handleUser = {handleUser} toggleScanner={toggle}/>}
-
         <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("ListFacility")}>
             <Text>Select Facility</Text>
         </TouchableOpacity>
